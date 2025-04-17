@@ -1,0 +1,13 @@
+{
+  "name": "retail-management-system",
+  "version": "1.0.0",
+  "description": "Sistema gerencial para comércio varejista",
+  "scripts": {
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "start": "cd backend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
