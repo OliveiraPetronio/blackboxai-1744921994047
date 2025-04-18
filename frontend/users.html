@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Usuários - Retail Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex-shrink-0 text-xl font-semibold text-indigo-600">
+          Retail Management
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Dashboard</a>
+          <a href="users.html" class="text-indigo-600 font-semibold border-b-2 border-indigo-600">Usuários</a>
+          <a href="clientes.html" class="text-gray-700 hover:text-indigo-600 transition">Clientes</a>
+          <a href="fornecedores.html" class="text-gray-700 hover:text-indigo-600 transition">Fornecedores</a>
+          <a href="vendas.html" class="text-gray-700 hover:text-indigo-600 transition">Vendas</a>
+          <a href="financeiro.html" class="text-gray-700 hover:text-indigo-600 transition">Financeiro</a>
+          <a href="relatorios.html" class="text-gray-700 hover:text-indigo-600 transition">Relatórios</a>
+          <a href="configuracoes.html" class="text-gray-700 hover:text-indigo-600 transition">Configurações</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="text-gray-700 hover:text-indigo-600 transition" aria-label="User menu">
+            <i class="fas fa-user-circle fa-lg"></i>
+          </button>
+          <button class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition">Sair</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-grow max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Cadastro de Usuários</h1>
+    <form class="bg-white rounded-lg shadow p-6 space-y-6" id="userForm">
+      <div>
+        <label for="name" class="block text-gray-700 font-semibold mb-2">Nome Completo</label>
+        <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+      <div>
+        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+      <div>
+        <label for="role" class="block text-gray-700 font-semibold mb-2">Função</label>
+        <select id="role" name="role" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="">Selecione a função</option>
+          <option value="admin">Administrador</option>
+          <option value="vendedor">Vendedor</option>
+        </select>
+      </div>
+      <div>
+        <label for="password" class="block text-gray-700 font-semibold mb-2">Senha</label>
+        <input type="password" id="password" name="password" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+      <div>
+        <label for="confirmPassword" class="block text-gray-700 font-semibold mb-2">Confirmar Senha</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      </div>
+      <div class="flex justify-end">
+        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700 transition">Salvar</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const userForm = document.getElementById('userForm');
+    userForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(userForm);
+      const data = Object.fromEntries(formData.entries());
+
+      if (data.password !== data.confirmPassword) {
+        alert('As senhas não coincidem.');
+        return;
+      }
+
+      // TODO: Integrate with backend API to save user
+      alert('Usuário salvo com sucesso (simulado).');
+      userForm.reset();
+    });
+  </script>
+</body>
+</html>
