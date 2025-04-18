@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Financeiro - Retail Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex-shrink-0 text-xl font-semibold text-indigo-600">
+          Retail Management
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition">Dashboard</a>
+          <a href="users.html" class="text-gray-700 hover:text-indigo-600 transition">Usuários</a>
+          <a href="clientes.html" class="text-gray-700 hover:text-indigo-600 transition">Clientes</a>
+          <a href="fornecedores.html" class="text-gray-700 hover:text-indigo-600 transition">Fornecedores</a>
+          <a href="vendas.html" class="text-gray-700 hover:text-indigo-600 transition">Vendas</a>
+          <a href="financeiro.html" class="text-indigo-600 font-semibold border-b-2 border-indigo-600">Financeiro</a>
+          <a href="relatorios.html" class="text-gray-700 hover:text-indigo-600 transition">Relatórios</a>
+          <a href="configuracoes.html" class="text-gray-700 hover:text-indigo-600 transition">Configurações</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="text-gray-700 hover:text-indigo-600 transition" aria-label="User menu">
+            <i class="fas fa-user-circle fa-lg"></i>
+          </button>
+          <button class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition">Sair</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-grow max-w-6xl mx-auto p-6">
+    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Financeiro</h1>
+    <section class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Contas a Pagar</h2>
+      <form id="contasPagarForm" class="space-y-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label for="descricaoPagar" class="block text-gray-700 font-semibold mb-2">Descrição</label>
+            <input type="text" id="descricaoPagar" name="descricaoPagar" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label for="valorPagar" class="block text-gray-700 font-semibold mb-2">Valor</label>
+            <input type="number" id="valorPagar" name="valorPagar" min="0" step="0.01" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label for="dataVencimentoPagar" class="block text-gray-700 font-semibold mb-2">Data de Vencimento</label>
+            <input type="date" id="dataVencimentoPagar" name="dataVencimentoPagar" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Adicionar Conta a Pagar</button>
+        </div>
+      </form>
+
+      <h2 class="text-xl font-semibold mb-4">Contas a Receber</h2>
+      <form id="contasReceberForm" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label for="descricaoReceber" class="block text-gray-700 font-semibold mb-2">Descrição</label>
+            <input type="text" id="descricaoReceber" name="descricaoReceber" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label for="valorReceber" class="block text-gray-700 font-semibold mb-2">Valor</label>
+            <input type="number" id="valorReceber" name="valorReceber" min="0" step="0.01" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label for="dataVencimentoReceber" class="block text-gray-700 font-semibold mb-2">Data de Vencimento</label>
+            <input type="date" id="dataVencimentoReceber" name="dataVencimentoReceber" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Adicionar Conta a Receber</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const contasPagarForm = document.getElementById('contasPagarForm');
+    contasPagarForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contasPagarForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // TODO: Integrate with backend API to save contas a pagar
+      alert('Conta a pagar adicionada com sucesso (simulado).');
+      contasPagarForm.reset();
+    });
+
+    const contasReceberForm = document.getElementById('contasReceberForm');
+    contasReceberForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contasReceberForm);
+      const data = Object.fromEntries(formData.entries());
+
+      // TODO: Integrate with backend API to save contas a receber
+      alert('Conta a receber adicionada com sucesso (simulado).');
+      contasReceberForm.reset();
+    });
+  </script>
+</body>
+</html>
