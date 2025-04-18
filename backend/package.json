@@ -20,10 +20,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
     "express-rate-limit": "^6.9.0",
+    "express-validator": "^7.0.1",
     "helmet": "^7.0.0",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.1",
@@ -31,11 +35,7 @@
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.5.2",
     "sequelize": "^6.32.1",
-    "winston": "^3.10.0",
-    "express-async-errors": "^3.1.1",
-    "compression": "^1.7.4",
-    "cookie-parser": "^1.4.6",
-    "express-validator": "^7.0.1"
+    "winston": "^3.10.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
@@ -57,9 +57,14 @@
     ]
   },
   "nodemonConfig": {
-    "watch": ["src"],
+    "watch": [
+      "src"
+    ],
     "ext": "js,json",
-    "ignore": ["src/tests/**", "src/**/*.test.js"],
+    "ignore": [
+      "src/tests/**",
+      "src/**/*.test.js"
+    ],
     "delay": "2"
   },
   "engines": {
